@@ -46,6 +46,7 @@ def main_screen():
     aww_entry = Entry(width=30)
     aww_entry.insert(END, string="Do not include special characters ('$' or ',')")
     aww_entry.grid(row=1, column=1, columnspan=3)
+    aww_entry.focus_set()
 
     # Date Section
     date_label = Label(text="Enter the date range: ")
