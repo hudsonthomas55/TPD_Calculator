@@ -6,6 +6,12 @@ window.minsize(width=500, height=500)
 window.title("TPD Calculator")
 window.config(padx=50, pady=50)
 
+# -------------------------------------------- REFERENCES ---------------------------------------- #
+aww = 0
+date_from = ""
+date_to = ""
+earnings = 0
+
 
 # -------------------------------------------- FUNCTIONS---------------------------------------- #
 def clear_frame():
@@ -13,20 +19,12 @@ def clear_frame():
         widget.destroy()
 
 
-# -------------------------------------------- OLD CODE ---------------------------------------- #
-# aww = input("Enter pre-injury AWW (no commas): \n$")
-# date_from = input("Enter starting date (MM/DD/YY): \n")
-# date_to = input("Enter ending date (MM/DD/YY): \n")
-# earnings = input("How much were the earnings during this period? \n$")
-#
-#
-# tpd_owed = round((float(aww) - float(earnings)) * 0.6667, 2)
-#
-# message = f"TPD calculated for period from {date_from} to {date_to}, pre-injury AWW is ${aww}, earnings during this " \
-#           f"period was {earnings}. ${tpd_owed} is owed."
+def tpd_calc():
+    tpd_owed = ((float(aww) - float(earnings)) * .6667)
+    tpd_rounded = round(tpd_owed, 2)
+    print(f"TPD calculated for date range: {date_from}-{date_to}. AWW was ${aww}, earnings were ${earnings}. TPD owed "
+          f"for this period is ${tpd_owed}. TPD paid is: ${tpd_rounded}.")
 
-# print(f"TPD owed: {tpd_owed}. Copy/paste below message:")
-# print(message)
 
 # ------------------------------------- MAIN SCREEN ------------------------------------- #
 def main_screen():
@@ -34,7 +32,25 @@ def main_screen():
 
     # SUBMIT BUTTON
     def submit_button():
-        print("the button works")
+        global aww
+        global date_from
+        global date_to
+        global earnings
+
+        aww_answer = aww_entry.get()
+        date_from_answer = date_from_entry.get()
+        date_to_answer = date_to_entry.get()
+        earnings_answer = earnings_entry.get()
+
+        print(f"You entered the aww as ${aww_answer}, date range as {date_from_answer}-{date_to_answer}, "
+              f"and the earnings during this time was ${earnings_answer}.")
+
+        aww = aww_answer
+        date_from = date_from_answer
+        date_to = date_to_answer
+        earnings = earnings_answer
+
+        tpd_calc()
 
 
     welcome_label = Label(text="Welcome! \n Let's calculate some TPD. \n\n", font=("Arial", 30))
