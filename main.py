@@ -60,7 +60,7 @@ def main_screen():
     welcome_label.grid(row=0, column=0, columnspan=3)
 
     # AWW Section
-    aww_label = Label(text="Enter the pre-injury average weekly wage: ")
+    aww_label = Label(text="Enter the pre-injury average weekly wage (AWW): ")
     aww_label.grid(row=1, column=0)
     aww_entry = Entry(width=30)
     aww_entry.insert(END, string="$1,000")
