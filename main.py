@@ -1,6 +1,6 @@
 from tkinter import *
 
-# ---------------------------------------------- WINDOW SETUP ---------------------------------------------- #
+# -------------------------------------- WINDOW SETUP ------------------------------------ #
 window = Tk()
 window.minsize(width=500, height=500)
 window.title("TPD Calculator")
@@ -15,6 +15,7 @@ earnings = 0
 
 # -------------------------------------------- FUNCTIONS---------------------------------------- #
 def clear_frame():
+    """ This function clears the screen and allows for the next function to be created """
     for widget in window.winfo_children():
         widget.destroy()
 
@@ -23,6 +24,9 @@ def clear_frame():
 
 # ------------------------------------- MAIN SCREEN ------------------------------------- #
 def main_screen():
+    """ This function is the primary screen used by the program. This can be cleared as needed 
+    but is easier to place inside a function that can be recalled. """
+    # Call clear frame function
     clear_frame()
 
     # Submit button function
@@ -95,8 +99,6 @@ def main_screen():
     submit_button.grid(row=6, column=0, columnspan=2)
 
 
-# ---------------------------------------- KEEP WINDOW OPEN ---------------------------------------- #
+# -------------------------------------- KEEP WINDOW OPEN -------------------------------------- #
 main_screen()
 window.mainloop()
-
-
