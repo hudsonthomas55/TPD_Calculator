@@ -1,4 +1,5 @@
 from tkinter import *
+import pyperclip
 
 # -------------------------------------- WINDOW SETUP ------------------------------------ #
 window = Tk()
@@ -18,8 +19,6 @@ def clear_frame():
     """ This function clears the screen and allows for the next function to be created """
     for widget in window.winfo_children():
         widget.destroy()
-
-
 
 
 # ------------------------------------- MAIN SCREEN ------------------------------------- #
@@ -54,10 +53,12 @@ def main_screen():
     def tpd_calc():
         tpd_owed = ((float(aww) - float(earnings)) * .6667)
         tpd_rounded = round(tpd_owed, 2)
-        return_label.config(text=f"TPD calculated for date range: {date_from}-{date_to}. \n"
-                                 f"AWW was ${aww}, earnings were ${earnings}. \n"
-                                 f"TPD owed for this period is ${tpd_owed}. \n"
-                                 f"TPD paid is: ${tpd_rounded}. \n")
+        tpd_txt = (f'TPD calculated for date range: {date_from}-{date_to}. \n'
+                   f'AWW was ${aww}, earnings were ${earnings}. \n'
+                   f'TPD owed for this period is ${tpd_owed}. \n'
+                   f'TPD paid is: ${tpd_rounded}. \n')
+        pyperclip.copy(tpd_txt)
+        return_label.config(text=f"{tpd_txt}")
 
     # Screen setup
     welcome_label = Label(text="Welcome! \n Let's calculate some TPD. \n\n", font=("Arial", 30))
