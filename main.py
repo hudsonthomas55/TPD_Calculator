@@ -56,7 +56,8 @@ def main_screen():
         tpd_txt = (f'TPD calculated for date range: {date_from}-{date_to}. \n'
                    f'AWW was ${aww}, earnings were ${earnings}. \n'
                    f'TPD owed for this period is ${tpd_owed}. \n'
-                   f'TPD paid is: ${tpd_rounded}. \n')
+                   f'TPD paid is: ${tpd_rounded}. \n'
+                   f'\n\n This text has been copied to your clipboard. You can now copy this to your claim.')
         pyperclip.copy(tpd_txt)
         return_label.config(text=f"{tpd_txt}")
 
